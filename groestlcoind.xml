@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>groestlcoind</Name>
+  <Repository>groestlcoin/unraid-docker-groestlcoind</Repository>
+  <Registry>https://hub.docker.com/r/groestlcoin/unraid-docker-groestlcoind/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://forums.unraid.net/topic/178611-support-groestlcoin-templates-repo/</Support>
+  <Project>https://groestlcoin.org/</Project>
+  <Overview>
+    Support the Groestlcoin network by hosting your own node! This template provides a full Groestlcoin Core node, built in a verifiably trustless way.
+    [br][br]
+    To let other nodes in the network find your node, ensure port 1331 is forwarded from your router to the P2P port set below.
+    [br][br]
+    To customize all settings, create a file called groestlcoin.conf in the data directory. Refer to https://github.com/groestlcoin/groestlcoin/blob/master/share/examples/groestlcoin.conf for examples of settings you may apply.
+  </Overview>
+  <Category>Tools: Network:Other Crypto:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/groestlcoin/unraid-templates/master/groestlcoind.xml</TemplateURL>
+  <Icon>https://github.com/groestlcoin/unraid-templates/raw/master/img/groestlcoin.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Description>
+    Support the Groestlcoin network by hosting your own node! This template provides a full Groestlcoin Core node, built in a verifiably trustless way.
+  </Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>1331</HostPort>
+        <ContainerPort>1331</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>1441</HostPort>
+        <ContainerPort>1441</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/groestlcoin/core/</HostDir>
+      <ContainerDir>/root/.groestlcoin/</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment/>
+  <Labels/>
+  <Config Name="P2P TCP" Target="1331" Default="1331" Mode="tcp" Description="Port to listen for incoming node connections" Type="Port" Display="always" Required="true" Mask="false">1331</Config>
+  <Config Name="Local RPC" Target="1441" Default="1441" Mode="tcp" Description="Port to listen for RPC connections (Optional)" Type="Port" Display="always" Required="false" Mask="false">1441</Config>
+  <Config Name="Data" Target="/root/.groestlcoin/" Default="/mnt/user/groestlcoin/" Mode="rw" Description="Blockchain and database storage. Requires at least 3 GiB free disk." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/groestlcoin/core/</Config>
+</Container>
